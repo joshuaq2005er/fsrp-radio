@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>RTO — Roleplay Radio</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">RTO — Roleplay Radio</div>
+    <nav class="menu">
+      <button id="btn-overlays">Overlays</button>
+      <button id="btn-settings">Settings</button>
+      <span id="status" class="status">Offline</span>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div id="login-card" class="card login-card">
+      <h2>Select your department</h2>
+      <label>
+        Department
+        <select id="deptSelect">
+          <option value="LEO">LEO (Police)</option>
+          <option value="TFD">TFD (Fire)</option>
+          <option value="EMS">EMS (Medical)</option>
+          <option value="DOT">DOT (Transit)</option>
+        </select>
+      </label>
+      <label>
+        Unit ID
+        <input id="unitInput" placeholder="e.g., 12-34" />
+      </label>
+      <label>
+        Passcode
+        <input id="passcodeInput" type="password" placeholder="Passcode" />
+      </label>
+      <div class="login-actions">
+        <button id="btnLogin">Login</button>
+        <button id="btnDemo">Demo</button>
+      </div>
+      <small class="warning">Tip: Change passcodes in app.js before publishing.</small>
+    </div>
+
+    <div id="radio-card" class="card radio-card hidden">
+      <div class="radio-top">
+        <div class="radio-left">
+          <div class="badge" id="badgeDept">DEPT</div>
+          <div class="badge" id="badgeUnit">UNIT</div>
+        </div>
+        <div class="radio-right">
+          <div id="menuText">Menu • Messages • Settings</div>
+        </div>
+      </div>
+
+      <div class="radio-screen">
+        <div id="message-feed" class="message-feed"></div>
+      </div>
+
+      <div class="radio-controls">
+        <button id="holdButton" class="hold-btn">HOLD TO TALK</button>
+        <div class="controls-row">
+          <button id="btnSendTxt">Send Text</button>
+          <input id="txtToSend" placeholder="Type a message..." />
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <aside id="overlayPanel" class="overlay-panel hidden">
+    <h3>Roblox Overlays</h3>
+    <div class="overlay-items" id="overlayList"></div>
+    <button id="btnCloseOverlay">Close</button>
+  </aside>
+
+  <aside id="settingsPanel" class="settings-panel hidden">
+    <h3>Settings</h3>
+    <label>
+      Broadcast scope
+      <select id="broadcastScope">
+        <option value="department">Department-only</option>
+        <option value="all">All Departments</option>
+      </select>
+    </label>
+    <label>
+      Volume
+      <input id="volumeRange" type="range" min="0" max="1" step="0.05" value="0.8" />
+    </label>
+    <div>
+      <button id="btnLogout">Logout</button>
+    </div>
+    <button id="btnCloseSettings">Close</button>
+  </aside>
+
+  <footer class="footer">
+    <small>Built for roleplay — for production use secure auth and server-side passcodes.</small>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
